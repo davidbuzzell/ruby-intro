@@ -6,7 +6,7 @@
 # write a weather summary out to the screen. Something like this:
 # Currently it is 67 degrees and Sunny.
 # Forecast for the next 7 days:
-# - 65 degres and Mostly Cloudy
+# - 65 degrees and Mostly Cloudy
 # - 70 degrees and Partly Cloudy
 # - 62 degrees and Sunny
 # - 68 degrees and Sunny
@@ -30,3 +30,33 @@ weather_data = {
     { temperature: 60, conditions: "Rainy", precipitation: 0.9 }
   ]
 }
+
+def display_weather(date_ind, temp, cond, precip)
+    if date_ind == 0
+        begin_str = "Currently, it is"
+    elsif date_ind == 1
+        begin_str = "Tomorrow, it will be"
+    else
+        begin_str = "In #{date_ind} days, it will be"
+    end
+
+    if precip > 0.5 && cond != "Rainy"
+        rain_str = " with a #{(precip * 100).to_i}% chance of rain"
+    else
+        rain_str = ""
+    end
+
+    puts "#{begin_str} #{temp} degrees and #{cond}#{rain_str}"
+end
+
+display_weather(0,
+                weather_data[:current][:temperature],
+                weather_data[:current][:conditions],
+                0.0)
+
+weather_data[:forecast].each.with_index(1) do |forecast, ind|
+    display_weather(ind,
+                    forecast[:temperature],
+                    forecast[:conditions],
+                    forecast[:precipitation])
+end

@@ -15,3 +15,11 @@
 # HINTS
 # Learn to read the documentation!
 # https://ruby-doc.org/core-2.7.0/Array.html
+
+my_stuff = ["milk", "eggs", "bacon"]
+your_stuff = ["beer", "cookies", "apples"]
+
+combined = ((my_stuff + your_stuff).uniq).sort
+combined.each do |ele|
+    print "buy #{ele}\n"
+end

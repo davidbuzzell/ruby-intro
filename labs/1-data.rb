@@ -15,3 +15,16 @@
 # rand(1..6)
 # Log output to the screen with puts:
 # puts "Hello, world"
+
+
+# 1. set the first die and write it to the screen
+die1 = rand(1..6)
+puts die1
+
+# 2. set the second die and write it to the screen
+die2 = rand(1..6)
+puts die2
+
+# 3. create a variable for the total and write it to the screen
+total = die1 + die2
+puts "The total is: #{total}"
